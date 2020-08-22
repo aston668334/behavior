@@ -37,7 +37,7 @@ figure3 =figure ;
 nbins = 2 %%¤À¦¨´X¶ô
 xedges = linspace(min(figurex),max(figurex),nbins+1);
 yedges = linspace(min(figurey),max(figurey),nbins+1);
-hist2d(totledatare(:,3),totledatare(:,4),)
+hist2d(totledatare(:,3),totledatare(:,4),xedges,yedges)
 [n,xbin,ybin]=hist2d(totledatare(:,3),totledatare(:,4),xedges,yedges);
 ybin = rot90(fliplr(ybin));
 ybin = [0;ybin];
