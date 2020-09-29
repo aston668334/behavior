@@ -1,10 +1,27 @@
 %% 讀資料
 pkg load io
+pkg load video
 
 delete('temp.xlsx')
 %%讀檔
 [filename ,filepath]=uigetfile('*.xlsx','please choose the excel file');
 [ ~, ~, rawData,~ ] = xlsread(([filepath filename]),2); 
+
+%%讀影像檔
+[filename ,filepath]=uigetfile('*.mp4','please choose the video file ',filepath);
+
+%%取影像的魚缸座標
+figure2=figure;
+vidFrame= aviread([filepath filename],1);%% 讀取影片檔 讀取偵圖像
+image(vidFrame);
+[x,y,~] = ginput(4);%%點選邊界
+close;
+clear currAxes v vidFrame
+
+%%pixel to cm 轉換
+pixel_to_cm = calobration(x,y)
+
+
 %%取有效偵數
 [m,n]=find(strcmp(rawData,{'Visible Frames'}));
 totleframe=cell2mat(rawData(m,n+1));
@@ -30,8 +47,10 @@ for i=1:totleframe
       break
   end
 end
-%% 合併速度和位置
+%% 合併速度和位置並校正成cm
 totledata=[posistionxy(firstframe:lastframe,:) speed(1:size(speed,1)-1,3)]; 
+totledata = totledata * pixel_to_cm
+
 %% 畫圖
 totledata=[totledata ; [1:6]];
 totledata(end,:) = NaN;
@@ -48,7 +67,7 @@ createfigure( totledata(:,1),totledatare(:,4),totledatare(:,3),  totledata(:,6))
 %% 準備存檔檔案
 [m,n]=size(totledata);
 celltotledata=num2cell(totledata);
-title={'Time(s)','Track','Pos.X(mm)','Pos.Y(mm)','Label','Current Speed (mm/s)'};
+title={'Time(s)','Track','Pos.X(cm)','Pos.Y(cm)','Label','Current Speed (cm/s)'};
 celltotledata=[title ; celltotledata];
 
 %%讀影像檔
