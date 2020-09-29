@@ -22,13 +22,13 @@ patch('Parent',axes1,'ZData',ZData1,'YData',YData1,'XData',XData1,...
 set(gca,'YDir','reverse');
     
 % Create zlabel
-zlabel('time(s)');
+zlabel('time(s) ');
 
 % Create ylabel
-ylabel('y posistion');
+ylabel('y posistion(pixel)');
 
 % Create xlabel
-xlabel('x posistion');
+xlabel('x posistion(pixel)');
 
 % Create colorbar
 colorbar('peer',axes1);

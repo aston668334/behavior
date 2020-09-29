@@ -26,10 +26,10 @@ plot(X3,Y3);
 
 set(gca,'YDir','reverse');
 % Create ylabel
-ylabel('y posistion');
+ylabel('y posistion(pixel)');
 
 % Create xlabel
-xlabel('x posistion');
+xlabel('x posistion(pixel)');
 
 
 box(axes1,'on');

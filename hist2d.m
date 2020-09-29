@@ -162,13 +162,13 @@ if nargout < 1 || plot_bar3 || plot_tile
         end
         % Create zlabel
         set(gca,'YDir','reverse');
-zlabel('times(¦¸)');
+zlabel('times');
 
 % Create ylabel
-ylabel('y posistion');
+ylabel('y posistion(pixel)');
 
 % Create xlabel
-xlabel('x posistion');
+xlabel('x posistion(pixel)');
 
 		axis tight
 		view(3)

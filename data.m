@@ -51,7 +51,26 @@ celltotledata=num2cell(totledata);
 title={'Time(s)','Track','Pos.X(mm)','Pos.Y(mm)','Label','Current Speed (mm/s)'};
 celltotledata=[title ; celltotledata];
 
-%存檔
+%%讀影像檔
+pkg load video
+[filename ,filepath]=uigetfile('*.mp4','please choose the video file ',filepath);
+%%取影像的魚缸座標
+figure2=figure;
+vidFrame= aviread([filepath filename],1);%% 讀取影片檔 讀取偵圖像
+image(vidFrame);
+[x,y,~] = ginput(4);%%點選邊界
+close;
+clear currAxes v vidFrame
+%%將魚缸四點排序 b(2,:)左上 b(1,:)左下 c(2,:)右上 c(1,:) 右下
+totledatare(end,4)=NaN;
+[a,~]=sortrows([x,y],1);
+[b,~]=sortrows(a(1:2,:),2);
+[c,~]=sortrows(a(3:4,:),2);
+figurex=([b(2,1);c(2,1);c(1,1);b(1,1);b(2,1)]);
+figurey=([b(2,2);c(2,2);c(1,2);b(1,2);b(2,2)]);
+%和raw data 進行相同處理
+%%figurex=figurex-minx; %xposistion
+%%figurey=abs(figurey-maxy); %yposistion
 
 %% 
 clear fileType i lastframe posistionxy  sheets speedframe firstframe j number rawData speed text totleframe m n title m2 m3 n2 n3
