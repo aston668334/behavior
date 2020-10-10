@@ -6,8 +6,9 @@ clc
 
 loaddata
 preprocess
-plotfig1
-totle_static
-edge1
-%%time split_long_rows
+
+time_split_long_rows
+
+
+
 

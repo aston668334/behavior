@@ -1,12 +1,12 @@
 %%作魚缸-魚路徑圖
 figure2=figure;
-createaxes(figure2, totledata(:,3), totledata(:,4), figurex, figurey, linex,liney )
+createaxes(figure2, splitdata(:,3), splitdata(:,4), figurex, figurey, linex,liney )
 %%做格狀的(頻率-區域圖)
 figure3 =figure ; 
 nbins = 2 %%分成幾塊
 xedges = linspace(min(figurex),max(figurex),nbins+1);
 yedges = linspace(min(figurey),max(figurey),nbins+1);
-[n,xbin,ybin]=hist2d(totledata(:,3),totledata(:,4),xedges,yedges);
+[n,xbin,ybin]=hist2d(splitdata(:,3),splitdata(:,4),xedges,yedges);
 
 ybin = [8.3,16.6]
 xbin = [11.5,23]
@@ -20,10 +20,10 @@ persent = [ybin persent];
 persent= num2cell(persent);
 
 %% 準備存檔檔案
-[m,n]=size(totledata);
-celltotledata=num2cell(totledata);
+[m,n]=size(splitdata);
+cellsplitdata=num2cell(splitdata);
 title={'Time(s)','Track','Pos.X(cm)','Pos.Y(cm)','Label','Current Speed (cm/s)','Angle_to_base_vector','Quadrant','wheather_speed > 0.5 cm/s'};
-celltotledata=[title ; celltotledata];
+cellsplitdata=[title ; cellsplitdata];
 
 %%儲存座標速度和頻率區域資料
 [filename, filepath] = uiputfile({'*.xls';'*.csv'},'Save As...',[[excel_filepath,[excel_filename(1:end-5),'_temp']] '.xlsx']);
@@ -34,7 +34,7 @@ celltotledata=[title ; celltotledata];
     else
     filename = 'temp.xlsx';
     end
-    xlswrite([excel_filepath filename],celltotledata,'totledata')
+    xlswrite([excel_filepath filename],cellsplitdata,'splitdata')
     
     xlswrite([excel_filepath filename],persent,'posistion');
     

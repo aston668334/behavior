@@ -6,13 +6,13 @@ up_mean_speed = 0;
 up_max_1_persent_speed = 0;
 
 %%和速度大於0.5cm
-totledata(:,9) = 0;
+splitdata(:,9) = 0;
 faster_speed_time = 0;
 
-for i = 1:length(totledata)
+for i = 1:length(splitdata)
 
   %%逆時針為正
-  test_point = [totledata(i,3),totledata(i,4)];
+  test_point = [splitdata(i,3),splitdata(i,4)];
   center_edge = [mean(figurex(1:4)),mean(figurey(1:4))];
   base_vector = right_point - center_edge;
  
@@ -20,25 +20,25 @@ for i = 1:length(totledata)
   
   [angle_ab,Quadrant] = posistioninQuadrant(test_vector,base_vector);
   
-  totledata(i,7) = angle_ab;
-  totledata(i,8) = Quadrant;
+  splitdata(i,7) = angle_ab;
+  splitdata(i,8) = Quadrant;
   
-  if (i > 1) && ( Quadrant == 2 || Quadrant == 1 ) && ( totledata(i-1,8) == 2 || totledata(i-1,8) == 1)
+  if (i > 1) && ( Quadrant == 2 || Quadrant == 1 ) && ( splitdata(i-1,8) == 2 || splitdata(i-1,8) == 1)
     
-  up_distance = norm(totledata(i,3:4)-totledata(i-1,3:4)) + up_distance;
+  up_distance = norm(splitdata(i,3:4)-splitdata(i-1,3:4)) + up_distance;
   
-  up_speed = [up_speed ; totledata(i,6)];
+  up_speed = [up_speed ; splitdata(i,6)];
   
   end
-  if (i > 1) && (totledata(i,6) > 0.5) && (totledata(i-1,6) > 0.5)
+  if (i > 1) && (splitdata(i,6) > 0.5) && (splitdata(i-1,6) > 0.5)
     
-    totledata(i,9) = 1; 
-    faster_speed_time = (totledata(i,1) - totledata(i-1,1)) + faster_speed_time; 
+    splitdata(i,9) = 1; 
+    faster_speed_time = (splitdata(i,1) - splitdata(i-1,1)) + faster_speed_time; 
     
 
   elseif i == 1
     
-    totledata((totledata(i,6) > 0.5) , 9) = 1;
+    splitdata((splitdata(i,6) > 0.5) , 9) = 1;
   
   end  
 end
