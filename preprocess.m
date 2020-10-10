@@ -31,7 +31,7 @@ end
 totledata=[posistionxy(firstframe:lastframe,:) speed(1:size(speed,1)-1,3)]; 
 totledata(:,3)  =  (totledata(:,3)* pixel_to_cm)-min_x;
 totledata(:,4)  =  (totledata(:,4)* pixel_to_cm)-min_y;
-
+totledata(:,6)  =  (totledata(:,6)* pixel_to_cm);
 %%計算分割魚缸上下的縣
 left_point=[(figurex(1)+figurex(4))/2,(figurey(1)+figurey(4))/2];
 right_point=[(figurex(2)+figurex(3))/2,(figurey(2)+figurey(3))/2];
