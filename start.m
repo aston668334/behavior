@@ -3,5 +3,7 @@
 clear
 close all
 clc
-data
+loaddata
+preprocess
+plotfig1
 edge1

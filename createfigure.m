@@ -25,10 +25,10 @@ set(gca,'YDir','reverse');
 zlabel('time(s) ');
 
 % Create ylabel
-ylabel('y posistion(pixel)');
+ylabel('y posistion(cm)');
 
 % Create xlabel
-xlabel('x posistion(pixel)');
+xlabel('x posistion(cm)');
 
 % Create colorbar
 colorbar('peer',axes1);
