@@ -1,9 +1,8 @@
 %%time_split_long_rows
-
 now_frame = 1;
-delta_time = 120;
 new_frame = 1;
-
+%% time to split
+delta_time = 30;
 while true
 
 now_frame = new_frame;  

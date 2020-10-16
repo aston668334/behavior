@@ -22,7 +22,7 @@ persent= num2cell(persent);
 %% 準備存檔檔案
 [m,n]=size(splitdata);
 cellsplitdata=num2cell(splitdata);
-title={'Time(s)','Track','Pos.X(cm)','Pos.Y(cm)','Label','Current Speed (cm/s)','Angle_to_base_vector','Quadrant','wheather_speed > 0.5 cm/s'};
+title={'Time(s)','Track','Pos.X(cm)','Pos.Y(cm)','Label','Current Speed (cm/s)','Angle_to_base_vector','Quadrant','wheather_speed < 0.5 cm/s'};
 cellsplitdata=[title ; cellsplitdata];
 
 

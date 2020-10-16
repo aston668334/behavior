@@ -36,5 +36,9 @@ totledata(:,6)  =  (totledata(:,6)* pixel_to_cm);
 left_point=[(figurex(1)+figurex(4))/2,(figurey(1)+figurey(4))/2];
 right_point=[(figurex(2)+figurex(3))/2,(figurey(2)+figurey(3))/2];
 
+%%
+top_point = [mean([figurex(1),figurex(3)]),mean([figurey(1),figurey(3)])];
+bottom_point = [mean([figurex(2),figurex(4)]),mean([figurey(2),figurey(4)])];
+
 linex=[left_point(1),right_point(1)];
 liney=[left_point(2),right_point(2)];
