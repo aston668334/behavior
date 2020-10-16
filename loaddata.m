@@ -14,5 +14,7 @@ image(vidFrame);
 close;
 clear currAxes v vidFrame
 
+edge_data = num2cell([x;y]);
+
 %%ÅªÀÉ
 [ ~, ~, rawData,~ ] = xlsread(([excel_filepath excel_filename]),2); 

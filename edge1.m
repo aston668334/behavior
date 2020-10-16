@@ -32,10 +32,12 @@ file_name_prefix = [excel_filename(1:end-5),'_',num2str(now_time),'s','-',num2st
 
 xlswrite([[excel_filepath,[file_name_prefix,'_temp']] '.xlsx'],cellsplitdata,'splitdata')
 
+xlswrite([[excel_filepath,[file_name_prefix,'_temp']] '.xlsx'],edge_data,'edge');
+
 xlswrite([[excel_filepath,[file_name_prefix,'_temp']] '.xlsx'],persent,'posistion');
 
 xlswrite([[excel_filepath,[file_name_prefix,'_temp']] '.xlsx'],cell_static_data,'stastic');
-    
+
 %%儲存圖片(魚缸-魚路徑圖、頻率-區域圖)
 figure1=1;
 saveas(figure1,[excel_filepath,[file_name_prefix,'path-speed.png']],'png');
