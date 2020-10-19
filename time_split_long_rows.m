@@ -29,3 +29,18 @@ edge1
 
 close all
 end
+%%totle time
+
+%%time_split_long_rows
+now_frame = 1;
+new_frame = length(totledata);
+
+splitdata = totledata(now_frame:new_frame,:);
+now_time = totledata(now_frame,1);
+new_time = totledata(new_frame,1);
+plotfig1
+totle_static
+edge1
+
+
+close all
